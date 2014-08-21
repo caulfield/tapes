@@ -8,8 +8,9 @@ module Helpers
     end
   end
 
-  def concat_form_for(object, &block)
-    concat form_for object, &block
+  def concat_form_for(object, options={}, &block)
+    options.merge!(tapes: true)
+    concat form_for object, options, &block
   end
 
   def assert_no_select(selector, value = nil)

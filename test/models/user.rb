@@ -4,7 +4,8 @@ class User
   include ActiveModel::Model
 
   attr_accessor :id,
-    :first_name, :second_name, :third_name, :title, :nickname, :uid
+    :first_name, :second_name, :third_name, :title, :nickname, :uid,
+    :age, :weight, :height, :volume
 
   # presence validations
   validates :uid, presence: true
@@ -20,4 +21,11 @@ class User
   validates :first_name, length: { minimum: 2 }
   validates :second_name, length: { minimum: 3 }, unless: :first_name
   validates :nickname, length: { in: 3..12 }, allow_blank: true
+
+  # numericality validations
+  validates :uid, numericality: { only_integer: true }
+  validates :age, numericality: { only_integer: true, less_than: 100, greater_than: 0 }
+  validates :height, numericality: { only_integer: false, less_than_or_equal_to: 250, greater_than_or_equal_to: 20 }
+  validates :weight, numericality: true, allow_blank: true
+  validates :volume, numericality: true, if: :weight, unless: :age
 end

@@ -1,3 +1,5 @@
+require 'bundler/setup'
+
 require "minitest/autorun"
 
 require 'active_support/all'
@@ -9,8 +11,11 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
 
 require './test/models/user'
 
+require 'tapes'
+
 class ActionView::TestCase
   include Helpers
+  include ::Tapes::ActionView::Helpers::FormHelper
 
   setup :prepare_user
 

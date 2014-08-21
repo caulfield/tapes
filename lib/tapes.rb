@@ -1,5 +1,8 @@
 require "tapes/version"
 
 module Tapes
-  # Your code goes here...
+end
+
+if defined?(::ActionView)
+  require 'tapes/action_view'
 end

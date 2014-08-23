@@ -1,3 +1,4 @@
+require "tapes/validations"
 require "tapes/version"
 
 module Tapes

@@ -5,7 +5,6 @@ module Tapes
   end
 end
 
+require 'tapes/action_view/form_builder'
 
-require 'tapes/action_view/form_helper'
-
-::ActionView::Base.send :include, Tapes::ActionView::Helpers::FormHelper
+::ActionView::Helpers::FormBuilder.send :include, Tapes::ActionView::Helpers::FormBuilder

@@ -6,8 +6,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
     concat_form_for @user do |f|
       f.text_field :uid
     end
-    assert_select "input[data-tps-length=?][data-tps-length-minimum=?]", true, 8
-    assert_select "input[data-tps-length=?][data-tps-length-maximum=?]", true, 8
+    assert_select "input[data-tps-length=?][data-tps-length-is=?]", true, 8
   end
 
   def test_tps_length_opened_range_option
@@ -15,7 +14,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
       f.text_field :title
     end
     assert_select "input[data-tps-length=?][data-tps-length-minimum=?]", true, 2
-    assert_select "input[data-tps-length=?][data-tps-length-maximum=?]", true, 3
+    assert_select "input[data-tps-length=?][data-tps-length-maximum=?]", true, 2
   end
 
   def test_tps_length_minimum_option
@@ -30,7 +29,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
       f.text_field :second_name
     end
     assert_select "input[data-tps-length=?][data-tps-length-minimum=?]", true, 3
-    assert_select "input[data-tps-length-unless=?]", "user[first_name]"
+    assert_select "input[data-tps-length-unless=?]", "first_name"
   end
 
   def test_tps_length_close_range
@@ -38,7 +37,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
       f.text_field :nickname
     end
     assert_select "input[data-tps-length=?][data-tps-length-minimum=?]", true, 3
-    assert_select "input[data-tps-length=?][data-tps-length-maximum=?]", true, 11
+    assert_select "input[data-tps-length=?][data-tps-length-maximum=?]", true, 12
   end
 
   def test_tps_length_allow_blank
@@ -60,7 +59,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
       f.text_field :uid
     end
     assert_select "input[data-tps-length=?]", true
-    assert_no_select "[data-tps-length-ignore-blank]"
-    assert_no_select "[data-tps-length-ignore-nil]"
+    assert_no_select "[data-tps-length-allow-blank]"
+    assert_no_select "[data-tps-length-allow-nil]"
   end
 end

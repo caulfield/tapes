@@ -1,6 +1,7 @@
 require 'bundler/setup'
 
 require "minitest/autorun"
+require 'minitest/unit'
 
 require 'active_support/all'
 require 'action_view'
@@ -15,7 +16,6 @@ require 'tapes'
 
 class ActionView::TestCase
   include Helpers
-  include ::Tapes::ActionView::Helpers::FormHelper
 
   setup :prepare_user
 

@@ -9,16 +9,15 @@ module Tapes::ActionView::Helpers
       tapes_fields = base.field_helpers.map(&:to_s) - non_tapes_fields
 
       tapes_fields.each do |selector|
-        base.class_eval <<-RUBY_EVAL
-          def #{selector}_with_tapes(method, options = {})
+        base.class_eval do
+          define_method "#{selector}_with_tapes" do |method, options={}|
             if @options.delete(:tapes) && options.delete(:tapes) != false
               options = tapes_formatter.merge options, client_validations(method)
             end
-            #{selector}_without_tapes(method, options)
+            send "#{selector}_without_tapes", method, options
           end
-        RUBY_EVAL
-
-        base.class_eval { alias_method_chain selector, :tapes }
+          alias_method_chain selector, :tapes
+        end
       end
     end
 

@@ -11,7 +11,7 @@ module Tapes::ActionView::Helpers
       tapes_fields.each do |selector|
         base.class_eval <<-RUBY_EVAL
           def #{selector}_with_tapes(method, options = {})
-            if @options.delete(:tapes)
+            if @options.delete(:tapes) && options.delete(:tapes) != false
               options = tapes_formatter.merge options, client_validations(method)
             end
             #{selector}_without_tapes(method, options)

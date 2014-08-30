@@ -22,6 +22,13 @@ class FormBuilderTest < ActionView::TestCase
     assert_instance_of Tapes::Formatter::DataAttrs, view.send(:tapes_formatter)
   end
 
+  def test_tapes_fields_wihout_tapes
+    concat_form_for @user do |f|
+      f.text_field :first_name, tapes: false
+    end
+    assert_has_no_tps_attributes
+  end
+
   # input types live there
 
   def test_text_field

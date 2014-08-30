@@ -14,6 +14,12 @@ module Tapes
         end
         {'data' => options}
       end
+
+      def merge(options, validation_options)
+        options['data'] ||= {}
+        options['data'].reverse_merge! validation_options['data']
+        options
+      end
     end
   end
 end

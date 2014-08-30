@@ -6,14 +6,14 @@ class FormForActiveModelNumericalityTest < ActionView::TestCase
     concat_form_for @user do |f|
       f.text_field :uid
     end
-    assert_select "input[data-tps-numericality=?][data-tps-numericaly-only-integer=?]", true, true
+    assert_select "input[data-tps-numericality=?][data-tps-numericality-only-integer=?]", true, true
   end
 
   def test_tps_numericality_only_integer_false_option
     concat_form_for @user do |f|
       f.text_field :height
     end
-    assert_select "input[data-tps-numericality=?][data-tps-numericality-only-integer]", true, false
+    assert_select "input[data-tps-numericality=?][data-tps-numericality-only-integer=?]", true, false
   end
 
   def test_tps_numericality_closed_limits
@@ -43,13 +43,13 @@ class FormForActiveModelNumericalityTest < ActionView::TestCase
     concat_form_for @user do |f|
       f.text_field :volume
     end
-    assert_select "input[data-tps-numericality=?][data-tps-numericality-if=?]", "weight"
+    assert_select "input[data-tps-numericality=?][data-tps-numericality-if=?]", true, "weight"
   end
 
   def test_tps_numericality_unless_option
     concat_form_for @user do |f|
       f.text_field :volume
     end
-    assert_select "input[data-tps-numericality=?][data-tps-numericality-unless=?]", "age"
+    assert_select "input[data-tps-numericality=?][data-tps-numericality-unless=?]", true, "age"
   end
 end

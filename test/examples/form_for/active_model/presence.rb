@@ -34,13 +34,13 @@ class FormForActiveModelPresenceTest < ActionView::TestCase
     concat_form_for @user do |f|
       f.text_field :nickname
     end
-    assert_select "[data-tps-presence=?][data-tps-presence-allow-blank]", true, true
+    assert_select "[data-tps-presence=?][data-tps-presence-allow-blank=?]", true, true
   end
 
   def test_tps_presence_allow_blank_false
     concat_form_for @user do |f|
       f.text_field :first_name
     end
-    assert_select "input[data-tps-presence=?][data-tps-presence-allow-blank]", true, false
+    assert_select "input[data-tps-presence=?][data-tps-presence-allow-blank=?]", true, false
   end
 end

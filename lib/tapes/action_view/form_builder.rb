@@ -1,11 +1,11 @@
 require "tapes/validations"
+require 'tapes/formatter/data_attrs'
 
 module Tapes::ActionView::Helpers
   module FormBuilder
     def self.included(base)
       non_tapes_fields = %w(apply_form_for_options! label fields_for hidden_field)
       tapes_fields = base.field_helpers.map(&:to_s) - non_tapes_fields
-      # @tapes_formatter = ...
 
       tapes_fields.each do |selector|
         base.class_eval <<-RUBY_EVAL
@@ -21,12 +21,18 @@ module Tapes::ActionView::Helpers
       end
     end
 
+    protected
+
+    def tapes_formatter
+      Tapes::Formatter::DataAttrs.new
+    end
+
     private
 
     def client_validations(method)
       @_client_validations ||= Tapes::Validations.new @object
       @_client_validations.on(method)
-      # @tapes_formmater.format @_client_validations.on(method)
+      tapes_formatter.format @_client_validations.on(method)
     end
   end
 end

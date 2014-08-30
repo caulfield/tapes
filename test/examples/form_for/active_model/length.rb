@@ -59,7 +59,7 @@ class FormForActiveModelLengthTest < ActionView::TestCase
       f.text_field :uid
     end
     assert_select "input[data-tps-length=?]", true
-    assert_no_select "[data-tps-length-allow-blank]"
-    assert_no_select "[data-tps-length-allow-nil]"
+    assert_select "[data-tps-length-allow-blank=?]", false
+    assert_select "[data-tps-length-allow-nil=?]", false
   end
 end

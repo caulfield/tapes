@@ -1,6 +1,6 @@
 require './test/test_helper'
 
-class ValidationsTests < MiniTest::Unit::TestCase
+class ValidationsTests < MiniTest::Test
 
   def setup
     @user = User.new
@@ -18,12 +18,5 @@ class ValidationsTests < MiniTest::Unit::TestCase
     assert_equal presence_validations[0].options, { allow_blank: false }
     length_validations = validations[:length]
     assert_equal length_validations[0].options, { minimum: 2 }
-  end
-
-  def test_on_method_valid_kinds
-    Tapes::Validations.stub_const :KINDS, %i(presence) do
-      validations = @service.on(:first_name)
-      assert_equal validations.keys, %i(presence)
-    end
   end
 end

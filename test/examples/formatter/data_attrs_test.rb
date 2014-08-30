@@ -1,6 +1,6 @@
 require './test/test_helper'
 
-class DataAttrsFormatterTest < MiniTest::Unit::TestCase
+class DataAttrsFormatterTest < MiniTest::Test
 
   def setup
     formatter = Tapes::Formatter::DataAttrs.new

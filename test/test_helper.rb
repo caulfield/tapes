@@ -11,8 +11,6 @@ require 'action_view/test_case'
 
 Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
 
-require './test/models/user'
-
 require 'tapes'
 
 class ActionView::TestCase

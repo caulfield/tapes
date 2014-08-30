@@ -19,4 +19,11 @@ class ValidationsTests < MiniTest::Unit::TestCase
     length_validations = validations[:length]
     assert_equal length_validations[0].options, { minimum: 2 }
   end
+
+  def test_on_method_valid_kinds
+    Tapes::Validations.stub_const :KINDS, %i(presence) do
+      validations = @service.on(:first_name)
+      assert_equal validations.keys, %i(presence)
+    end
+  end
 end

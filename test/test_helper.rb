@@ -2,6 +2,7 @@ require 'bundler/setup'
 
 require "minitest/autorun"
 require 'minitest/unit'
+require 'minitest/stub_const'
 
 require 'active_support/all'
 require 'action_view'

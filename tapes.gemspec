@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tapes/version'
@@ -8,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version       = Tapes::VERSION
   spec.authors       = ["Sergey Kuchmistov"]
   spec.email         = ["sergey.kuchmistov@gmail.com"]
-  spec.summary       = %q{Tapes. Get all project validations on view}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Tapes}
+  spec.description   = %q{Tapes is a library that provides an easy interface for managing your model validation on html forms.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

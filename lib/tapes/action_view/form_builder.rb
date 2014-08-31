@@ -11,7 +11,7 @@ module Tapes::ActionView::Helpers
       tapes_fields.each do |selector|
         base.class_eval do
           define_method "#{selector}_with_tapes" do |method, options={}|
-            if @options.delete(:tapes) && options.delete(:tapes) != false
+            if @options[:tapes] && options.delete(:tapes) != false
               options = tapes_formatter.merge options, client_validations(method)
             end
             send "#{selector}_without_tapes", method, options

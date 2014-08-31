@@ -66,6 +66,6 @@ Do not use it. Create custom validations. It's better. Use form objects for any 
 
 ## Contributing
 
-Read [cnt].
+Read [CONTRIBUTING.md][cnt].
 
-[cnt]: https://github.com/caulfield/tapes/CONTRIBUTING.md
+[cnt]: https://github.com/caulfield/tapes/blob/master/CONTRIBUTING.md

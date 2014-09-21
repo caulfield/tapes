@@ -13,6 +13,8 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each { |f| require f }
 
 require 'tapes'
 
+I18n.enforce_available_locales = false
+
 class ActionView::TestCase
   include Helpers
 
